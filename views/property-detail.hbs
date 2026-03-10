@@ -1,0 +1,125 @@
+<section class="property-detail">
+  <div class="container">
+    <div class="property-detail__breadcrumb">
+      <a href="/">Home</a> / <a href="/properties">Properties</a> / <span>{{property.title}}</span>
+    </div>
+
+    <div class="property-detail__header">
+      <div class="property-detail__title-block">
+        {{#if property.tag}}<span class="property-tag">{{property.tag}}</span>{{/if}}
+        <h1>{{property.title}}</h1>
+        <p class="property-detail__location">📍 {{property.location}}</p>
+      </div>
+      <div class="property-detail__price-block">
+        <div class="property-detail__price">{{property.priceLabel}}</div>
+        <span class="property-type property-type--{{property.type}}">{{property.type}}</span>
+      </div>
+    </div>
+
+    <!-- Main property image -->
+    <div class="property-detail__gallery">
+      <div class="property-detail__main-image" style="background: none; padding: 0;">
+        <img src="/{{property.images.[0]}}" alt="{{property.title}}" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+    </div>
+
+    <div class="property-detail__body">
+      <div class="property-detail__main">
+        <!-- Specs bar -->
+        <div class="specs-bar">
+          {{#if property.beds}}<div class="spec"><strong>{{property.beds}}</strong><span>Bedrooms</span></div>{{/if}}
+          <div class="spec"><strong>{{property.baths}}</strong><span>Bathrooms</span></div>
+          <div class="spec"><strong>{{property.sqft}}</strong><span>Sq Ft</span></div>
+          <div class="spec"><strong>{{property.yearBuilt}}</strong><span>Year Built</span></div>
+          <div class="spec"><strong>{{property.city}}</strong><span>City</span></div>
+        </div>
+
+        <!-- Description -->
+        <div class="property-detail__section">
+          <h3>About this Property</h3>
+          <p>{{property.description}}</p>
+        </div>
+
+        <!-- Features -->
+        <div class="property-detail__section">
+          <h3>Features & Amenities</h3>
+          <ul class="features-grid">
+            {{#each property.features}}
+            <li class="feature-item">✓ {{this}}</li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="property-detail__sidebar">
+        <!-- Agent card -->
+        {{#if agent}}
+        <div class="sidebar-agent">
+          <div class="agent-avatar-placeholder agent-avatar-placeholder--lg">{{agent.name.[0]}}</div>
+          <div>
+            <h4>{{agent.name}}</h4>
+            <p class="agent-title">{{agent.title}}</p>
+            <a href="tel:{{agent.phone}}" class="agent-phone">{{agent.phone}}</a>
+          </div>
+        </div>
+        {{/if}}
+
+        <!-- Inquiry form -->
+        <form class="inquiry-form" action="/inquiries" method="POST">
+          <h4>Request Information</h4>
+          <input type="hidden" name="propertyId" value="{{property.id}}"/>
+          <input type="hidden" name="propertyTitle" value="{{property.title}}"/>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Your full name" required/>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="your@email.com" required/>
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" name="phone" placeholder="+1 (000) 000-0000"/>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" rows="4" placeholder="I'm interested in this property...">I'm interested in {{property.title}} and would like to schedule a viewing.</textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Send Inquiry</button>
+        </form>
+      </aside>
+    </div>
+
+    <!-- Related properties -->
+    {{#if related.length}}
+    <div class="property-detail__related">
+      <h3>Similar Properties</h3>
+      <div class="properties-grid">
+        {{#each related}}
+        <article class="property-card">
+          <a href="/properties/{{slug}}" class="property-card__image-wrap">
+            <div class="property-card__image">
+              <img src="/{{images.[0]}}" alt="{{title}}" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <span class="property-type property-type--{{type}}">{{type}}</span>
+          </a>
+          <div class="property-card__body">
+            <div class="property-card__meta">
+              <span class="property-city">{{city}}</span>
+              <span class="property-price">{{priceLabel}}</span>
+            </div>
+            <h3 class="property-card__title"><a href="/properties/{{slug}}">{{title}}</a></h3>
+            <div class="property-card__specs">
+              {{#if beds}}<span>{{beds}} Beds</span>{{/if}}
+              <span>{{baths}} Baths</span>
+              <span>{{sqft}} sqft</span>
+            </div>
+          </div>
+        </article>
+        {{/each}}
+      </div>
+    </div>
+    {{/if}}
+  </div>
+</section>

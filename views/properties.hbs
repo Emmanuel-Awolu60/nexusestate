@@ -1,0 +1,80 @@
+<section class="page-hero page-hero--sm">
+  <div class="container">
+    <div class="section-eyebrow">Our Portfolio</div>
+    <h1 class="page-title">Properties</h1>
+  </div>
+</section>
+
+<section class="section section--listing">
+  <div class="container">
+    <!-- Filters -->
+    <form class="filter-bar" action="/properties" method="GET">
+      <div class="filter-group">
+        <label>Type</label>
+        <div class="filter-pills">
+          <button type="submit" name="type" value="all" class="pill {{#if (eq activeType 'all')}}pill--active{{/if}}">All</button>
+          <button type="submit" name="type" value="sale" class="pill {{#if (eq activeType 'sale')}}pill--active{{/if}}">For Sale</button>
+          <button type="submit" name="type" value="rent" class="pill {{#if (eq activeType 'rent')}}pill--active{{/if}}">For Rent</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <label>Category</label>
+        <div class="filter-pills">
+          <button type="submit" name="category" value="all" class="pill {{#if (eq activeCategory 'all')}}pill--active{{/if}}">All</button>
+          <button type="submit" name="category" value="residential" class="pill {{#if (eq activeCategory 'residential')}}pill--active{{/if}}">Residential</button>
+          <button type="submit" name="category" value="commercial" class="pill {{#if (eq activeCategory 'commercial')}}pill--active{{/if}}">Commercial</button>
+          <button type="submit" name="category" value="luxury" class="pill {{#if (eq activeCategory 'luxury')}}pill--active{{/if}}">Luxury</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <label>City</label>
+        <select name="city" onchange="this.form.submit()">
+          <option value="all" {{#if (eq activeCity 'all')}}selected{{/if}}>All Cities</option>
+          {{#each cities}}
+          <option value="{{this}}" {{#if (eq this ../activeCity)}}selected{{/if}}>{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </form>
+
+    <!-- Results -->
+    <div class="results-meta">
+      <span>{{properties.length}} properties found</span>
+    </div>
+
+    {{#if properties.length}}
+    <div class="properties-grid properties-grid--list">
+      {{#each properties}}
+      <article class="property-card" data-animate>
+        <a href="/properties/{{slug}}" class="property-card__image-wrap">
+          <div class="property-card__image">
+            <img src="/{{images.[0]}}" alt="{{title}}" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          {{#if tag}}<span class="property-tag">{{tag}}</span>{{/if}}
+          <span class="property-type property-type--{{type}}">{{type}}</span>
+        </a>
+        <div class="property-card__body">
+          <div class="property-card__meta">
+            <span class="property-city">{{city}}</span>
+            <span class="property-price">{{priceLabel}}</span>
+          </div>
+          <h3 class="property-card__title"><a href="/properties/{{slug}}">{{title}}</a></h3>
+          <p class="property-card__location">{{location}}</p>
+          <div class="property-card__specs">
+            {{#if beds}}<span>{{beds}} Beds</span>{{/if}}
+            <span>{{baths}} Baths</span>
+            <span>{{sqft}} sqft</span>
+          </div>
+          <a href="/properties/{{slug}}" class="property-card__cta">View Details →</a>
+        </div>
+      </article>
+      {{/each}}
+    </div>
+    {{else}}
+    <div class="no-results">
+      <p>No properties match your current filters.</p>
+      <a href="/properties" class="btn btn--primary">Clear Filters</a>
+    </div>
+    {{/if}}
+  </div>
+</section>

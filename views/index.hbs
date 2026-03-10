@@ -1,0 +1,192 @@
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Premium Real Estate Advisory</div>
+    <h1 class="hero-title">
+      Where <em>Exceptional</em><br/>Properties Meet<br/>Exceptional People
+    </h1>
+    <p class="hero-sub">From Manhattan penthouses to coastal estates — NexusEstate curates the finest residential and commercial properties for those who demand more.</p>
+    <div class="hero-actions">
+      <a href="/properties" class="btn btn--primary">Explore Properties</a>
+      <a href="/contact" class="btn btn--ghost">Speak to an Advisor</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">{{stats.total}}+</span>
+      <span class="stat-label">Active Listings</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">$4.2B</span>
+      <span class="stat-label">Transactions Closed</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">18+</span>
+      <span class="stat-label">Years of Excellence</span>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH BAR -->
+<section class="search-bar-section">
+  <div class="search-bar-wrap">
+    <form class="search-bar" action="/properties" method="GET">
+      <div class="search-field">
+        <label>Transaction</label>
+        <select name="type">
+          <option value="all">All Types</option>
+          <option value="sale">For Sale</option>
+          <option value="rent">For Rent</option>
+        </select>
+      </div>
+      <div class="search-divider"></div>
+      <div class="search-field">
+        <label>Category</label>
+        <select name="category">
+          <option value="all">All Categories</option>
+          <option value="residential">Residential</option>
+          <option value="commercial">Commercial</option>
+          <option value="luxury">Luxury</option>
+        </select>
+      </div>
+      <div class="search-divider"></div>
+      <div class="search-field">
+        <label>City</label>
+        <select name="city">
+          <option value="all">All Cities</option>
+          <option value="New York">New York</option>
+          <option value="Chicago">Chicago</option>
+          <option value="Miami">Miami</option>
+          <option value="Los Angeles">Los Angeles</option>
+          <option value="Greenwich">Greenwich</option>
+        </select>
+      </div>
+      <button type="submit" class="search-btn">Search</button>
+    </form>
+  </div>
+</section>
+
+<!-- FEATURED PROPERTIES -->
+<section class="section section--featured">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Handpicked for You</div>
+      <h2 class="section-title">Featured Properties</h2>
+      <a href="/properties" class="section-link">View All →</a>
+    </div>
+    <div class="properties-grid">
+      {{#each featured}}
+      <article class="property-card property-card--featured" data-animate>
+        <a href="/properties/{{slug}}" class="property-card__image-wrap">
+          <div class="property-card__image">
+            <img src="/{{images.[0]}}" alt="{{title}}" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          {{#if tag}}<span class="property-tag">{{tag}}</span>{{/if}}
+          <span class="property-type property-type--{{type}}">{{type}}</span>
+        </a>
+        <div class="property-card__body">
+          <div class="property-card__meta">
+            <span class="property-city">{{city}}</span>
+            <span class="property-price">{{priceLabel}}</span>
+          </div>
+          <h3 class="property-card__title"><a href="/properties/{{slug}}">{{title}}</a></h3>
+          <p class="property-card__location">{{location}}</p>
+          <div class="property-card__specs">
+            {{#if beds}}<span>{{beds}} Beds</span>{{/if}}
+            <span>{{baths}} Baths</span>
+            <span>{{sqft}} sqft</span>
+          </div>
+        </div>
+      </article>
+      {{/each}}
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PROPS -->
+<section class="section section--values">
+  <div class="container">
+    <div class="values-grid">
+      <div class="values-text">
+        <div class="section-eyebrow">Why NexusEstate</div>
+        <h2 class="section-title">A Different Standard<br/>of Real Estate</h2>
+        <p>We don't just list properties — we curate opportunities. Our advisors work with a select roster of clients, ensuring every engagement receives the focused attention it deserves.</p>
+        <a href="/about" class="btn btn--primary" style="margin-top:2rem;">Meet Our Team</a>
+      </div>
+      <div class="values-items">
+        <div class="value-item">
+          <div class="value-icon">◈</div>
+          <h4>Curated Portfolio</h4>
+          <p>Every listing is personally vetted. We represent only properties that meet our rigorous standards for quality, location, and investment potential.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">◈</div>
+          <h4>White-Glove Advisory</h4>
+          <p>Dedicated advisors, off-market access, and discreet representation for clients who value privacy and precision above all else.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">◈</div>
+          <h4>Full-Spectrum Service</h4>
+          <p>From acquisition and due diligence to financing and closing, our team manages every detail so you don't have to.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">◈</div>
+          <h4>Market Intelligence</h4>
+          <p>Proprietary data, neighborhood analytics, and two decades of transactional insight powering every recommendation we make.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENTS PREVIEW -->
+<section class="section section--agents">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">The Team</div>
+      <h2 class="section-title">Your Trusted Advisors</h2>
+      <a href="/about" class="section-link">Meet Everyone →</a>
+    </div>
+    <div class="agents-grid">
+      {{#each agents}}
+      <div class="agent-card" data-animate>
+        <div class="agent-card__avatar">
+          <div class="agent-avatar-placeholder">{{name.[0]}}</div>
+        </div>
+        <div class="agent-card__info">
+          <h4>{{name}}</h4>
+          <p class="agent-title">{{title}}</p>
+          <div class="agent-stats">
+            <span>{{deals}} Deals</span>
+            <span>{{years}} Years</span>
+          </div>
+          <div class="agent-specialties">
+            {{#each specialties}}<span class="spec-tag">{{this}}</span>{{/each}}
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-banner__inner">
+      <div class="cta-banner__text">
+        <h2>Ready to Find Your Next Property?</h2>
+        <p>Schedule a private consultation with one of our expert advisors today.</p>
+      </div>
+      <div class="cta-banner__actions">
+        <a href="/properties" class="btn btn--white">Browse Listings</a>
+        <a href="/contact" class="btn btn--outline-white">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>

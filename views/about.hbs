@@ -1,0 +1,103 @@
+<section class="page-hero">
+  <div class="container">
+    <div class="section-eyebrow">Who We Are</div>
+    <h1 class="page-title">Built on Trust.<br/>Driven by Excellence.</h1>
+    <p class="page-hero__sub">NexusEstate was founded on a simple belief: that exceptional clients deserve an exceptional standard of real estate service.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="about-story">
+      <div class="about-story__text">
+        <div class="section-eyebrow">Our Story</div>
+        <h2>Two Decades of Defining Real Estate</h2>
+        <p>Founded in 2005 in New York City, NexusEstate began as a boutique firm with a singular mission: to bring institutional-grade advisory services to individual buyers and investors. What started as a team of three has grown into a nationally recognized platform with offices in New York, Chicago, Miami, and Los Angeles.</p>
+        <p>We've closed over $4.2 billion in transactions — from first-time luxury condos to nine-figure commercial acquisitions — and we approach each deal with the same rigor and care we gave our very first client.</p>
+      </div>
+      <div class="about-story__stats">
+        <div class="big-stat">
+          <span class="big-num">$4.2B</span>
+          <span class="big-label">Transactions Closed</span>
+        </div>
+        <div class="big-stat">
+          <span class="big-num">735+</span>
+          <span class="big-label">Deals Completed</span>
+        </div>
+        <div class="big-stat">
+          <span class="big-num">4</span>
+          <span class="big-label">Major Markets</span>
+        </div>
+        <div class="big-stat">
+          <span class="big-num">18+</span>
+          <span class="big-label">Years of Excellence</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="section-eyebrow">The Team</div>
+      <h2 class="section-title">Meet Your Advisors</h2>
+    </div>
+    <div class="agents-detail-grid">
+      {{#each agents}}
+      <div class="agent-detail-card">
+        <div class="agent-detail-card__avatar">
+          <div class="agent-avatar-placeholder agent-avatar-placeholder--xl">{{name.[0]}}</div>
+        </div>
+        <div class="agent-detail-card__info">
+          <h3>{{name}}</h3>
+          <p class="agent-title">{{title}}</p>
+          <p class="agent-bio">{{bio}}</p>
+          <div class="agent-detail-stats">
+            <div><strong>{{deals}}</strong><span>Deals</span></div>
+            <div><strong>{{years}} yrs</strong><span>Experience</span></div>
+          </div>
+          <div class="agent-specialties">
+            {{#each specialties}}<span class="spec-tag">{{this}}</span>{{/each}}
+          </div>
+          <div class="agent-contact">
+            <a href="tel:{{phone}}">{{phone}}</a>
+            <a href="mailto:{{email}}">{{email}}</a>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="section-eyebrow">Our Approach</div>
+      <h2 class="section-title">How We Work</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h4>Discovery</h4>
+        <p>We begin by deeply understanding your goals, timeline, and priorities — whether you're buying, selling, leasing, or investing.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h4>Strategy</h4>
+        <p>Our advisors craft a tailored approach using proprietary market data, off-market access, and decades of transactional expertise.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h4>Execution</h4>
+        <p>We manage every detail — from negotiations and due diligence to legal coordination and closing — with precision and discretion.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h4>Relationship</h4>
+        <p>Our commitment doesn't end at closing. We remain your trusted real estate partner for every transaction that follows.</p>
+      </div>
+    </div>
+  </div>
+</section>

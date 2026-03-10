@@ -1,27 +1,25 @@
 const { NestFactory } = require('@nestjs/core');
 const { AppModule } = require('../dist/app.module');
-const express = require('express');
 const { join } = require('path');
 
-let app;
+let cachedApp;
 
 async function bootstrap() {
-  if (!app) {
-    const expressApp = express();
-    const nestApp = await NestFactory.create(AppModule, expressApp);
+  if (!cachedApp) {
+    const app = await NestFactory.create(AppModule);
     
-    nestApp.useStaticAssets(join(__dirname, '..', 'public'));
-    nestApp.setBaseViewsDir(join(__dirname, '..', 'views'));
-    nestApp.setViewEngine('hbs');
+    app.useStaticAssets(join(__dirname, '..', 'public'));
+    app.setBaseViewsDir(join(__dirname, '..', 'views'));
+    app.setViewEngine('hbs');
     
     const hbs = require('hbs');
     hbs.registerHelper('eq', (a, b) => a === b);
     hbs.registerHelper('neq', (a, b) => a !== b);
     
-    await nestApp.init();
-    app = expressApp;
+    await app.init();
+    cachedApp = app.getHttpAdapter().getInstance();
   }
-  return app;
+  return cachedApp;
 }
 
 module.exports = async (req, res) => {

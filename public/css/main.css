@@ -49,7 +49,7 @@ select, input, textarea, button { font-family: var(--font-sans); }
 .site-header.scrolled { box-shadow: var(--shadow); }
 .nav-inner {
   max-width: 1200px; margin: 0 auto; padding: 0 2rem;
-  display: flex; align-items: center; gap: 2rem;
+  display: flex; align-items: center; justify-content: space-between;
   height: 72px;
 }
 .logo { display: flex; align-items: center; gap: 10px; }
@@ -67,7 +67,7 @@ select, input, textarea, button { font-family: var(--font-sans); }
 .logo--light .logo-mark { background: var(--gold); color: var(--navy); }
 .logo--light .logo-text { color: var(--white); }
 
-.nav-links { display: flex; gap: 0.25rem; margin-left: auto; }
+.nav-links { display: flex; gap: 0.25rem; }
 .nav-links a {
   padding: 0.5rem 1rem; font-size: 0.82rem; letter-spacing: 0.06em;
   color: var(--dark-grey); font-weight: 400; transition: color var(--transition);
